@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-auth",
+  "version": "1.0.0",
+  "description": "A repo displaying how to do user authentication in Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayvolr/nodejs-auth.git"
+  },
+  "author": "Jon Love",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jayvolr/nodejs-auth/issues"
+  },
+  "homepage": "https://github.com/jayvolr/nodejs-auth#readme"
+}
