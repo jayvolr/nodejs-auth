@@ -1,13 +1,14 @@
 // Application entry point
 const express = require('express');
 const session = require('express-session');
+const secrets = require('./secrets');
 
 var app = express();
 
 app
   .set('view engine', 'hjs')
   .use(session({
-    secret: 'authentication is fun',
+    secret: secrets.session_secret,
     resave: false,
     saveUninitialized: false
   }))
