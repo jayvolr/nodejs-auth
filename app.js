@@ -1,6 +1,7 @@
 // Application entry point
 const bodyParser = require('body-parser');
 const express = require('express');
+const passport = require('passport');
 const session = require('express-session');
 const secrets = require('./secrets');
 const mongo = require('./db');
@@ -16,10 +17,14 @@ app
     resave: false,
     saveUninitialized: false
   }))
+  .use(passport.initialize())
+  .use(passport.session())
   .get('/', (req, res) => {
     res.render('index');
   })
   .get('/session', (req, res) => {
+    req.session.user = req.user;
+    req.session.isAuthenticated = req.isAuthenticated();
     res.send(req.session);
   })
   .get('/set', (req, res) => {
