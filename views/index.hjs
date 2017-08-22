@@ -5,6 +5,13 @@
     <title>Node.js Auth</title>
   </head>
   <body>
-    <h1>Hello auth</h1>
+    <h1>Login</h1>
+    <form id="loginForm" action="/login" method="post">
+      <input type="text" name="username" placeholder="Email">
+      <br><br>
+      <input type="password" name="password" placeholder="Password">
+      <br><br>
+      <input type="submit" value="Login">
+    </form>
   </body>
 </html>
