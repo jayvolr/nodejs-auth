@@ -23,21 +23,7 @@ app
     res.render('index');
   })
   .get('/session', (req, res) => {
-    req.session.user = req.user;
-    req.session.isAuthenticated = req.isAuthenticated();
     res.send(req.session);
-  })
-  .get('/set', (req, res) => {
-    req.session.name = "Jon";
-    res.redirect('/session');
-  })
-  .get('/db', (req, res) => {
-    mongo.db.collection('users')
-      .find()
-      .toArray((err, users) => {
-        if (err) throw err;
-        res.send(users);
-      });
   })
   .use(require('./routes/auth'))
   .listen(3000, () => {
