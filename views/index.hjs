@@ -13,5 +13,15 @@
       <br><br>
       <input type="submit" value="Login">
     </form>
+    <h1>Create Account</h1>
+    <form id="registerForm" action="/register" method="post">
+      <input type="text" name="username" placeholder="Email">
+      <br><br>
+      <input type="password" name="password" placeholder="Password">
+      <br><br>
+      <input type="password" name="password2" placeholder="Password (repeat)">
+      <br><br>
+      <input type="submit" value="Register">
+    </form>
   </body>
 </html>
