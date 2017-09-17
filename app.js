@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 const secrets = require('./secrets');
 const mongo = require('./db');
 
@@ -13,6 +14,7 @@ app
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: false}))
   .use(session({
+    store: new RedisStore(),
     secret: secrets.session_secret,
     resave: false,
     saveUninitialized: false
