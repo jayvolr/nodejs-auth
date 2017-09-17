@@ -11,6 +11,7 @@ var app = express();
 
 app
   .set('view engine', 'hjs')
+  .use(express.static(__dirname + '/public'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: false}))
   .use(session({
@@ -22,12 +23,17 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .get('/', (req, res) => {
-    res.render('index');
+    if (req.isAuthenticated()) {
+      res.redirect('/notes');
+    }else {
+      res.render('index');
+    }
   })
   .get('/session', (req, res) => {
     res.send(req.session);
   })
   .use(require('./routes/auth'))
+  .use(require('./routes/notes'))
   .listen(3000, () => {
     console.log('Server listening on port 3000...');
   });

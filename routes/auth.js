@@ -5,12 +5,17 @@ require('../passport');
 
 router
   .post('/login', passport.authenticate('local', {
-    successRedirect: '/session',
-    failureRedirect: 'back'
+    successRedirect: '/notes',
+    failureRedirect: '/'
   }))
   .post('/register', passport.authenticate('local-register', {
-    successRedirect: '/session',
-    failureRedirect: 'back'
-  }));
+    successRedirect: '/notes',
+    failureRedirect: '/'
+  }))
+  .post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      res.sendStatus(200);
+    });
+  });
 
 module.exports = router;

@@ -18,10 +18,10 @@ function authenticate(email, password, done) {
     bcrypt.compare(password, user.password, (err, passwordMatches) => {
       if (passwordMatches === false) {
         return done(null, false, { message: "Incorrect email or password." });
+      }else {
+        return done(null, user);
       }
     });
-
-    return done(null, user);
   });
 }
 
