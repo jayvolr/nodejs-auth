@@ -48,7 +48,7 @@ function register(req, email, password, done) {
       mongo.db.collection('users')
       .insert(newUser, (err, result) => {
         if (err) return done(err);
-        return done(null, result.ops[0]);
+        return done(null, newUser);
       });
     });
   });
